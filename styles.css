@@ -167,9 +167,10 @@ button:hover, .custom-file-upload:hover {
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       overflow: auto;
     }
-.hidden, .hidden-input {
+.hidden, .hidden-input, .radio, br.mobile-only {
       display: none;
     }
+	
 h1 {
       text-align: center;
       font-weight: 600;
@@ -210,9 +211,8 @@ h1 {
   background-color: #6d4aff; 
 
 }
-.radio {
-	display: none;
-}
+
+
 .amnezia-icon {
 max-width: 40px;
 margin-bottom: -15px;
@@ -252,16 +252,18 @@ margin-bottom: -15px;
 }	
 
 #jc1{
-max-width: 23px
+max-width:	23px
 }
 #jmax1, #jmin1
 {
-max-width: 30px
+max-width:	30px
 }
 
 #fp1, #fps1, #fpd1 {
-	max-width: 52px
+	max-width:	52px
 }
+
+
 
 #warpButton {
 background: linear-gradient(90deg, #eeac43, #f15874)}
@@ -275,24 +277,28 @@ background: linear-gradient(90deg, #eeac43, #f15874)}
   left: 0px;
 }
 .container2 {
-min-width: 260px;
+	min-width: 260px;
 }
 
 #fp1, #fps1, #fpd1 {
-max-width: 60px;
-height: 60px;
+	max-width: 60px;
+	height: 60px;
 }
 
 #jmax1, #jmin1
 {
-max-width: 33px
+max-width:	33px
 }
 #jc1{
-max-width: 26px
+max-width:	26px
 }
+
+  br.mobile-only {
+    display: block;
+  }
 
 .container2.karing-active {
   left: -60px;
-  min-width: 380px;
+  min-width: 350px;
 }
 }
