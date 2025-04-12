@@ -67,9 +67,9 @@ document.querySelector('.randombtn').onclick = function() {
   const jmin = getRandomInt(1, 1279);
   const jmax = getRandomInt(jmin + 1, 1280);
   
-  document.getElementById('1jc').value = jc;
-  document.getElementById('1jmin').value = jmin;
-  document.getElementById('1jmax').value = jmax;
+  document.getElementById('jc1').value = jc;
+  document.getElementById('jmin1').value = jmin;
+  document.getElementById('jmax1').value = jmax;
   document.getElementById('junk3').checked = true;
 };
 document.querySelector('.randombtn2').onclick = function() {
@@ -78,9 +78,9 @@ document.querySelector('.randombtn2').onclick = function() {
     const second = getRandomInt(first + 1, 120);
     return `${first}-${second}`;
   };
-  document.getElementById('1fp').value = generateRandomPair();
-  document.getElementById('1fps').value = generateRandomPair();
-  document.getElementById('1fpd').value = generateRandomPair();
+  document.getElementById('fp1').value = generateRandomPair();
+  document.getElementById('fps1').value = generateRandomPair();
+  document.getElementById('fpd1').value = generateRandomPair();
   document.getElementById('fake3').checked = true;
 };
 
@@ -114,9 +114,9 @@ function generateAmneziaDefaults() {
       jmax = 30;
       break;
     case 'junk3':
-      jc = parseInt(document.getElementById('1jc').value) || 128;
-      jmin = parseInt(document.getElementById('1jmin').value) || 1279;
-      jmax = parseInt(document.getElementById('1jmax').value) || 1280;
+      jc = parseInt(document.getElementById('jc1').value) || 128;
+      jmin = parseInt(document.getElementById('jmin1').value) || 1279;
+      jmax = parseInt(document.getElementById('jmax1').value) || 1280;
       break;
     default:
       jc = 128;
@@ -409,9 +409,9 @@ function generateKaringYaml() {
       fakePacketsDelay = "10-30";
       break;
     case 'fake3':
-      fakePackets = document.getElementById('1fp').value || "5-10";
-      fakePacketsSize = document.getElementById('1fps').value || "40-100";
-      fakePacketsDelay = document.getElementById('1fpd').value || "20-250";
+      fakePackets = document.getElementById('fp1').value || "5-10";
+      fakePacketsSize = document.getElementById('fps1').value || "40-100";
+      fakePacketsDelay = document.getElementById('fpd1').value || "20-250";
       break;
     default:
       fakePackets = "5-10";
