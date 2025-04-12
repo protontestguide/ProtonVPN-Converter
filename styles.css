@@ -47,7 +47,8 @@ body {
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	    position: relative;
+	  position: relative;
+	  min-width: 260px;
     }
 	
 .container-columns.karing-active {
@@ -56,6 +57,7 @@ body {
 
 .container2.karing-active {
   margin-right: -110px;
+  min-width: 350px;
 }
 .textarea1 {
 	
