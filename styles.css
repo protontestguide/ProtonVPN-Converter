@@ -142,8 +142,8 @@ button:hover, .custom-file-upload:hover {
 
     .download-btn {
 	display: inline-block; 
-  margin: auto 30px; 
-		max-width:40%;
+ margin: auto;
+		max-width:90%;
       background: #2196F3;
     }
 
@@ -154,6 +154,8 @@ button:hover, .custom-file-upload:hover {
 .button-container {
   text-align: center; 
   margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .file-list, .result {
