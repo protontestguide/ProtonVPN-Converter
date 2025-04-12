@@ -279,7 +279,8 @@ min-width: 260px;
 }
 
 #fp1, #fps1, #fpd1 {
-max-width: 603px
+max-width: 60px;
+height: 17px;
 }
 
 #jmax1, #jmin1
