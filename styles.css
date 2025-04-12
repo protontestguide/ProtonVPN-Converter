@@ -279,7 +279,7 @@ min-width: 260px;
 }
 
 #fp1, #fps1, #fpd1 {
-max-width: 60px
+max-width: 63px
 }
 
 #jmax1, #jmin1
@@ -292,6 +292,6 @@ max-width: 26px
 
 .container2.karing-active {
   left: -60px;
-  min-width: 372px;
+  min-width: 380px;
 }
 }
