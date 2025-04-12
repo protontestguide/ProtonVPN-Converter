@@ -45,6 +45,7 @@
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	    position: relative;
     }
 	
 .container-columns.karing-active {
@@ -58,7 +59,6 @@
 	
       width: 100%;
       height: 200px;
-      margin: 10px 0;
       padding: 10px;
       border-radius: 8px;
       border: 1px solid #ADABA8;
@@ -153,33 +153,27 @@ button:hover, .custom-file-upload:hover {
   margin-top: 10px;
 }
 
-    .file-list, .result {
-		margin:auto;
-		max-width: 650px;
+.file-list, .result {
+	  margin:auto;
+	  max-width: 650px;
       background: #ffffff;
       padding: 15px;
       border-radius: 10px;
       margin-top: 15px;
+	  margin-bottom: 20px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       overflow: auto;
     }
-
-    .hidden {
+.hidden, .hidden-input {
       display: none;
     }
-
-    h1 {
+h1 {
       text-align: center;
       font-weight: 600;
       font-size: 28px;
       margin-bottom: 25px;
       text-shadow: 0 1px 3px rgba(0,0,0,0.7);
     }
-	
-	.hidden-input {
-    display: none;
-}
-
 .radio-fakeradio {
   display: inline-flex;
   justify-content: center;
@@ -196,7 +190,6 @@ button:hover, .custom-file-upload:hover {
   transform: scale(0.85);
   cursor: pointer; 
 }
-
 .radio-fakeradio:before {
   content: "";
   width: 0.7142857143em;
@@ -206,11 +199,9 @@ button:hover, .custom-file-upload:hover {
   transform: scale(0);
   transition: 0.15s cubic-bezier(0.33, 1, 0.68, 1), 0.15s transform cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-
 .radio:hover + .radio-fakeradio {
   border-color: #6d4aff;
 }
-
 .radio:checked + .radio-fakeradio:before {
   transform: scale(1);
   background-color: #6d4aff; 
@@ -225,14 +216,13 @@ margin-bottom: -15px;
 }
 
 .infobtn {
-    display: flex;
     flex-direction: column;
     align-items: center; 
     text-align: center; 
     width: 100%;
     max-width: 700px; 
     margin: 0 auto; 
-    padding: 20px;
+
 }
 #telegramButton,#BoostyButton,#githubButton,#DonationAlertsButton,#BoostyNewButton, #warpButton {
 	width: 100%;
@@ -260,3 +250,16 @@ margin-bottom: -15px;
 
 #warpButton {
 background: linear-gradient(90deg, #eeac43, #f15874)}
+
+@media (max-width: 730px) {
+	.container-columns {
+    display: block;
+	max-width: 65%;
+}
+.container-columns.karing-active {
+  left: 0px;
+}
+.container2.karing-active {
+  left: -60px;
+}
+}
