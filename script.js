@@ -385,7 +385,12 @@ function generateAWGYaml() {
   document.getElementById('yamlOutput').value = finalOutput;
   document.getElementById('downloadBtn').classList.remove('hidden');
   document.getElementById('downloadBtn').onclick = downloadAWGConfigs;
-  document.getElementById('copyBtn').classList.add('hidden');
+  document.getElementById('copyBtn').classList.remove('hidden');
+  document.getElementById('copyBtn').onclick = () => {
+    navigator.clipboard.writeText(fullYaml)
+      .then(() => alert('Конфиг скопирован в буфер обмена!'))
+      .catch(err => alert('Не удалось скопировать: ', err));
+  };
 }
 
 function generateKaringYaml() {
@@ -450,7 +455,7 @@ function generateKaringYaml() {
 }
 
 function downloadYAML(yamlContent, fileName) {
-  const blob = new Blob([yamlContent], { type: 'text/yaml' });
+  const blob = new Blob([yamlContent], { type: 'text/yaml; charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
@@ -471,7 +476,7 @@ function downloadAWGConfigs() {
       const awgConfig = generateSingleAWGConfig(proxy);
       const fileName = getAWGFileName(proxy, index);
       
-      const blob = new Blob([awgConfig], { type: 'text/plain' });
+      const blob = new Blob([awgConfig], { type: 'application/x-config; charset=utf-8' });
       const url = URL.createObjectURL(blob);
       
       const link = document.createElement('a');
@@ -550,3 +555,17 @@ function fallbackDownload(proxies) {
     }, 100 * index);
   });
 }
+
+function replaceMobileText() {
+    if (!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) return;
+
+    // Заменяем подписи к полям ввода
+    const labels = document.querySelectorAll('.musor2 .jc');
+    labels[0].previousSibling.textContent = "fake_packets = ";
+    labels[1].previousSibling.textContent = "fake_packets_size = ";
+    labels[2].previousSibling.textContent = "fake_packets_delay = ";
+}
+
+// Вызываем при загрузке и при изменении размера окна
+window.addEventListener('DOMContentLoaded', replaceMobileText);
+window.addEventListener('resize', replaceMobileText);
