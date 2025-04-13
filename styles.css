@@ -274,12 +274,15 @@ background: linear-gradient(90deg, #eeac43, #f15874)}
 	.container-columns {
     display: block;
 	max-width: 65%;
+	left: 0px;
 }
 .container-columns.karing-active {
   left: 0px;
 }
 .container2 {
 	min-width: 260px;
+	margin: 0 auto;
+	left: -20px;
 }
 
 #fp1, #fps1, #fpd1 {
@@ -303,4 +306,5 @@ max-width:	26px
   left: -60px;
   min-width: 350px;
 }
+
 }
