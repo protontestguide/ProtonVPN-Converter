@@ -235,9 +235,9 @@ function convertToClashProxy(wgConfig, fileName) {
 }
 
 function generateAmneziaOptionsYAML(options) {
-      let yaml = '    amnezia-wg-option:\n';
+      let yaml = '  amnezia-wg-option:\n';
       for (const [key, value] of Object.entries(options)) {
-        yaml += `      ${key}: ${value}\n`;
+        yaml += `    ${key}: ${value}\n`;
       }
       return yaml;
     }
@@ -343,24 +343,24 @@ function generateClashYaml() {
   }
 
   const yamlProxies = proxyList.map(proxy => {
-    let yaml = `  - name: ${proxy.name}\n`;
-    yaml += `    type: ${proxy.type}\n`;
-    yaml += `    server: ${proxy.server}\n`;
-    yaml += `    port: ${proxy.port}\n`;
-    yaml += `    ip: ${proxy.ip}\n`;
-    yaml += `    private-key: ${proxy.private_key}\n`;
-    yaml += `    public-key: ${proxy.public_key}\n`;
-    yaml += `    allowed-ips: [${proxy.allowed_ips.join(', ')}]\n`;
-    yaml += `    udp: ${proxy.udp}\n`;
-    yaml += `    mtu: ${proxy.mtu}\n`;
-    yaml += `    remote-dns-resolve: ${proxy.remote_dns_resolve}\n`;
-    yaml += `    dns: [${proxy.dns.join(', ')}]\n`;
+    let yaml = `- name: ${proxy.name}\n`;
+    yaml += `  type: ${proxy.type}\n`;
+    yaml += `  server: ${proxy.server}\n`;
+    yaml += `  port: ${proxy.port}\n`;
+    yaml += `  ip: ${proxy.ip}\n`;
+    yaml += `  private-key: ${proxy.private_key}\n`;
+    yaml += `  public-key: ${proxy.public_key}\n`;
+    yaml += `  allowed-ips: [${proxy.allowed_ips.join(', ')}]\n`;
+    yaml += `  udp: ${proxy.udp}\n`;
+    yaml += `  mtu: ${proxy.mtu}\n`;
+    yaml += `  remote-dns-resolve: ${proxy.remote_dns_resolve}\n`;
+    yaml += `  dns: [${proxy.dns.join(', ')}]\n`;
     yaml += generateAmneziaOptionsYAML(proxy['amnezia-wg-option'], proxy.isDefaultAmnezia);
     return yaml;
-  }).join('\n\n');
+  }).join('\n');
 
   const proxyGroups = generateProxyGroups(proxyList);
-  const fullYaml = `proxies:\n${yamlProxies}\n\nproxy-groups:${proxyGroups}`;
+  const fullYaml = `proxies:\n${yamlProxies}\nproxy-groups:${proxyGroups}`;
   
   document.getElementById('yamlOutput').value = fullYaml;
   document.getElementById('downloadBtn').classList.remove('hidden');
