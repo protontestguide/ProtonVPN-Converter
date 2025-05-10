@@ -92,7 +92,9 @@ const COUNTRY_FLAGS = {
       'FR': '🇫🇷 FR',
       'GB': '🇬🇧 GB',
       'CA': '🇨🇦 CA',
-      'AU': '🇦🇺 AU'
+      'AU': '🇦🇺 AU',
+      'RO': '🇷🇴 RO',
+      'PL': '🇵🇱 PL'
     };
 let proxyList = [];
 function getRandomInt(min, max) {
