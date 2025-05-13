@@ -144,11 +144,11 @@ button:hover, .custom-file-upload:hover {
 	display: inline-block; 
  margin: auto;
 		max-width:90%;
-      background: #2196F3;
+      background: #6D4AFF;
     }
 
     .download-btn:hover {
-      background: #42a5f5;
+      background: 4A2DC5;
     }
 
 .button-container {
@@ -269,6 +269,11 @@ max-width:	30px
 
 #warpButton {
 background: linear-gradient(90deg, #eeac43, #f15874)}
+
+#warpButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 @media (max-width: 730px) {
 	.container-columns {
