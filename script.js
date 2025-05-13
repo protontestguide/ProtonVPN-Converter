@@ -1,6 +1,3 @@
-document.getElementById('telegramButton').onclick = function() {
-    window.location.href = 'https://t.me/warp_1_1_1_1';
-}
 document.getElementById('DonationAlertsButton').onclick = function() {
     window.location.href = 'https://pay.cloudtips.ru/p/209310e4';
 }
@@ -26,11 +23,9 @@ document.getElementById('BoostyButton').onclick = function() {
         }, 300);
     }
 };
-document.getElementById('githubButton').onclick = function() {
-    window.location.href = 'https://docs.google.com/document/d/1DX4X7t7V4QasQJYbps5D1yNtsK7tqsouSMJH2w4AMOY';
-}
+
 document.getElementById('warpButton').onclick = function() {
-    window.location.href = 'https://generator-warp.vercel.app/';
+    window.location.href = 'https://my-other-projects.vercel.app/';
 }
 document.querySelectorAll('input[name="option"]').forEach(radio => {
   radio.addEventListener('change', function() {
