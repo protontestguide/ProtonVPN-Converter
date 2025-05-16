@@ -140,6 +140,11 @@ button:hover, .custom-file-upload:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+button:active, .custom-file-upload:active {
+  background: #6D4AFF;
+}
+
+
     .download-btn {
 	display: inline-block; 
  margin: auto;
@@ -273,7 +278,20 @@ background: linear-gradient(90deg, #eeac43, #f15874)}
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+#logo {
+	display: block; 
+	margin: 0 auto; 
+	max-width: 100%; 
+	padding-bottom: 20px
+	}
+
+
 @media (max-width: 730px) {
+	
+button, textarea, .custom-file-upload {
+  -webkit-tap-highlight-color: transparent;
+  outline: none !important;
+}  
 
 .container-columns {
     display: block;
@@ -300,12 +318,13 @@ background: linear-gradient(90deg, #eeac43, #f15874)}
 	height: 60px;
 }
 
+#logo {max-width: 90%}	
 body {padding: 0px;}
-.container-columns.karing-active {left: 0px}
 #jmax1, #jmin1 {max-width: 33px}
 #jc1 {max-width: 26px}
 br.mobile-only {display: block}
 .container2.karing-active {left: -55px}
+.container-columns.karing-active {left: 0px}
 
 #BoostyButton,#DonationAlertsButton,#BoostyNewButton, #warpButton {
 	width:90%;
@@ -313,5 +332,5 @@ br.mobile-only {display: block}
     padding: 10px 20px;
     font-size: 18px;
     cursor: pointer;
-}
+	}
 }
