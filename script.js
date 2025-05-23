@@ -27,6 +27,11 @@ document.getElementById('BoostyButton').onclick = function() {
 document.getElementById('warpButton').onclick = function() {
     window.location.href = 'https://my-other-projects.vercel.app/';
 }
+
+document.getElementById('promoButton').onclick = function() {
+    window.location.href = 'https://chatter-bike-3df.notion.site/Amnezia-Premium-1f72684dab0d8013a057ed6562c8bdca';
+}
+
 document.querySelectorAll('input[name="option"]').forEach(radio => {
   radio.addEventListener('change', function() {
     const musor1 = document.querySelector('.musor1');
@@ -139,52 +144,54 @@ function generateAmneziaDefaults() {
 }
 
 function parseWGConfig(text) {
-      const config = { 
-        interface: { amneziaOptions: {} },
-        peers: []
-      };
-      let currentSection = null;
+  const config = { 
+    interface: { amneziaOptions: {} },
+    peers: []
+  };
+  let currentSection = null;
 
-      text.split('\n').forEach(line => {
-        line = line.trim();
-        if (!line) return;
+  text.split('\n').forEach(line => {
+    line = line.trim();
+    if (!line) return;
 
-        if (currentSection === 'peer' && line.startsWith('#')) {
-          const nameMatch = line.match(/#\s*(.+)/);
-          if (nameMatch) {
-            config.peers[config.peers.length - 1].name = nameMatch[1].trim();
-          }
-          return;
-        }
-
-        if (line.startsWith('[') && line.endsWith(']')) {
-          currentSection = line.slice(1, -1).toLowerCase();
-          if (currentSection === 'peer') config.peers.push({ amneziaOptions: {} });
-          return;
-        }
-
-        const [key, ...valueParts] = line.split('=');
-        const cleanKey = key.trim().toLowerCase();
-        const value = valueParts.join('=').trim();
-
-        if (currentSection === 'interface') {
-          if (['jc', 'jmin', 'jmax', 's1', 's2', 'h1', 'h2', 'h3', 'h4'].includes(cleanKey)) {
-            config.interface.amneziaOptions[cleanKey] = value;
-          } else {
-            config.interface[cleanKey] = value;
-          }
-        } else if (currentSection === 'peer') {
-          const peer = config.peers[config.peers.length - 1];
-          if (['jc', 'jmin', 'jmax', 's1', 's2', 'h1', 'h2', 'h3', 'h4'].includes(cleanKey)) {
-            peer.amneziaOptions[cleanKey] = value;
-          } else {
-            peer[cleanKey] = value;
-          }
-        }
-      });
-
-      return config;
+    if (currentSection === 'peer' && line.startsWith('#')) {
+      const nameMatch = line.match(/#\s*(.+)/);
+      if (nameMatch) {
+        config.peers[config.peers.length - 1].name = nameMatch[1].trim();
+      }
+      return;
     }
+
+    if (line.startsWith('[') && line.endsWith(']')) {
+      currentSection = line.slice(1, -1).toLowerCase();
+      if (currentSection === 'peer') config.peers.push({ amneziaOptions: {} });
+      return;
+    }
+
+    const [key, ...valueParts] = line.split('=');
+    const cleanKey = key.trim().toLowerCase();
+    const value = valueParts.join('=').trim();
+
+    if (currentSection === 'interface') {
+      if (['jc', 'jmin', 'jmax', 's1', 's2', 'h1', 'h2', 'h3', 'h4'].includes(cleanKey)) {
+        config.interface.amneziaOptions[cleanKey] = value;
+      } else {
+        config.interface[cleanKey] = value;
+      }
+    } else if (currentSection === 'peer') {
+      const peer = config.peers[config.peers.length - 1];
+      if (['jc', 'jmin', 'jmax', 's1', 's2', 'h1', 'h2', 'h3', 'h4'].includes(cleanKey)) {
+        peer.amneziaOptions[cleanKey] = value;
+      } else if (cleanKey === 'presharedkey') {
+        peer.presharedKey = value; // Добавляем обработку PresharedKey
+      } else {
+        peer[cleanKey] = value;
+      }
+    }
+  });
+
+  return config;
+}
 
 function convertToClashProxy(wgConfig, fileName) {
   const interfaceData = wgConfig.interface;
@@ -193,6 +200,7 @@ function convertToClashProxy(wgConfig, fileName) {
   const defaultAmnezia = generateAmneziaDefaults();
   let proxyName = peerData.name || fileName.replace('.conf', '');
   let originalName = proxyName;
+  
   if (!proxyName) {
     proxyName = `Random_${Math.random().toString(36).substr(2, 5)}`;
   } else {
@@ -221,6 +229,7 @@ function convertToClashProxy(wgConfig, fileName) {
     ip: interfaceData.address.split('/')[0],
     private_key: interfaceData.privatekey,
     public_key: peerData.publickey,
+    preshared_key: peerData.presharedKey, // Добавляем PresharedKey в выходные данные
     allowed_ips: peerData.allowedips.split(',').map(ip => `'${ip.trim()}'`),
     udp: true,
     mtu: 1420,
@@ -348,6 +357,8 @@ function generateClashYaml() {
     yaml += `  private-key: ${proxy.private_key}\n`;
     yaml += `  public-key: ${proxy.public_key}\n`;
     yaml += `  allowed-ips: [${proxy.allowed_ips.join(', ')}]\n`;
+	if (proxy.preshared_key) {
+    yaml += `  pre-shared-key: ${proxy.preshared_key}\n`;}
     yaml += `  udp: ${proxy.udp}\n`;
     yaml += `  mtu: ${proxy.mtu}\n`;
     yaml += `  remote-dns-resolve: ${proxy.remote_dns_resolve}\n`;
@@ -427,6 +438,7 @@ function generateKaringYaml() {
     "local_address": [`${proxy.ip}/32`],
     "private_key": proxy.private_key,
     "peer_public_key": proxy.public_key,
+	"preshared_key": proxy.preshared_key || "",
     "mtu": proxy.mtu,
     "fake_packets": fakePackets,
     "fake_packets_size": fakePacketsSize,
@@ -520,6 +532,8 @@ function generateSingleAWGConfig(proxy) {
   awgConfig += `H4 = ${amneziaOptions.h4}\n`;
   awgConfig += `\n[Peer]\n`;
   awgConfig += `PublicKey = ${proxy.public_key}\n`;
+  if (proxy.preshared_key) {
+  awgConfig += `PresharedKey = ${proxy.preshared_key}\n`;}
   awgConfig += `AllowedIPs = ${proxy.allowed_ips.join(', ').replace(/'/g, '')}\n`;
   awgConfig += `Endpoint = ${proxy.server}:${proxy.port}\n`;
   
