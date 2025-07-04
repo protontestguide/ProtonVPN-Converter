@@ -438,7 +438,6 @@ function generateKaringYaml() {
     "local_address": [`${proxy.ip}/32`],
     "private_key": proxy.private_key,
     "peer_public_key": proxy.public_key,
-	"preshared_key": proxy.preshared_key || "",
     "mtu": proxy.mtu,
     "fake_packets": fakePackets,
     "fake_packets_size": fakePacketsSize,
