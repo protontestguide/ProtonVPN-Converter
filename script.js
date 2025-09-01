@@ -1,28 +1,3 @@
-document.getElementById('DonationAlertsButton').onclick = function() {
-    window.location.href = 'https://pay.cloudtips.ru/p/209310e4';
-}
-document.getElementById('BoostyNewButton').onclick = function() {
-    window.location.href = 'https://boosty.to/warphelp/donate';
-}
-document.getElementById('BoostyButton').onclick = function() {
-    const newButtons = document.getElementById('newButtons');
-
-    if (newButtons.classList.contains('show')) {
-        newButtons.classList.remove('show');
-        setTimeout(() => {
-            this.style.display = 'block';
-        }, 500);
-    } else {
-        this.style.display = 'none';
-        newButtons.classList.add('show');
-        setTimeout(() => {
-            window.scrollTo({
-                top: document.body.scrollHeight,
-                behavior: 'smooth'
-            });
-        }, 300);
-    }
-};
 
 document.getElementById('warpButton').onclick = function() {
     window.location.href = 'https://my-other-projects.vercel.app/';
