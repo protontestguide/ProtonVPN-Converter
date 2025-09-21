@@ -39,9 +39,9 @@ document.getElementById('wgFiles').addEventListener('change', function(e) {
     }
 });
 document.querySelector('.randombtn').onclick = function() {
-  const jc = getRandomInt(1, 128);
-  const jmin = getRandomInt(1, 1279);
-  const jmax = getRandomInt(jmin + 1, 1280);
+  const jc = getRandomInt(1, 100);
+  const jmin = getRandomInt(1, 200);
+  const jmax = getRandomInt(jmin + 1, 201);
   
   document.getElementById('jc1').value = jc;
   document.getElementById('jmin1').value = jmin;
