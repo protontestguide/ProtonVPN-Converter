@@ -71,15 +71,27 @@
 			f_p = <textarea id="fp1" class="jc" rows="1" maxlength="7" type="number" placeholder="5-10"></textarea><br class="mobile-only">
 			f_p_s = <textarea id="fps1" class="jc" rows="1" maxlength="7" type="number" placeholder="40-100"></textarea><br class="mobile-only">
 			f_p_d = <textarea id="fpd1" class="jc" rows="1" maxlength="7" placeholder="20-250"></textarea>
-			<button onclick="" class="randombtn2">Случайно</button>
+			<button onclick="" id="rndbtn" class="randombtn2">Случайно</button>
 			</div>
 		</div>
 	</div>
 		<div class="infobtn">
 			<div class="file-list" id="fileList"></div>
 			<div class="result" id="output">
+							<div class="switch">
+				<label class="toggle">
+					<input class="toggle-checkbox" type="checkbox" id="awg15" disabled>
+					<div class="toggle-switch"></div>
+					<span class="toggle-label">AWG 1.5</span>
+				</label>
+				<label class="toggle">
+					<input class="toggle-checkbox" type="checkbox" id="nojunk" disabled>
+					<div class="toggle-switch"></div>
+					<span class="toggle-label" style="padding-right: 0px;">Без мусора</span>
+				</label>
+				</div>
 				<textarea id="yamlOutput" placeholder="Результат появится здесь..." class="textarea1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-				<div class="button-container">
+				<div class="button-container hidden" id="btn-cont">
 					<button class="download-btn hidden" id="downloadBtn">Скачать</button>
 					<button class="download-btn hidden" id="copyBtn">Скопировать</button>
 				</div>
