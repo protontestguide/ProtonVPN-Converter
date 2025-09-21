@@ -174,6 +174,8 @@ button:active, .custom-file-upload:active {
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       overflow: auto;
     }
+	
+	.result {padding-top: 0px;}
 .hidden, .hidden-input, .radio, br.mobile-only {
       display: none;
     }
@@ -362,6 +364,96 @@ max-width:	30px
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 }
+
+
+.switch { 
+    text-align: center; 
+	padding: 10px;
+    padding-top: 15px;
+}
+
+.toggle {
+  display: inline-block;
+      user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+.toggle-switch {
+  cursor: pointer;
+  display: inline-block;
+  background: #f7f5ff;
+  border-radius: 16px;
+  width: 48px;
+  height: 27px;
+  position: relative;
+  vertical-align: middle;
+  transition: background 0.25s;
+
+  border: 1px solid #ADABA8;
+}
+.toggle-switch:before, .toggle-switch:after {
+  content: "";
+}
+.toggle-switch:before {
+  display: block;
+  background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  width: 19px;
+  height: 19px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  transition: left 0.25s;
+}
+.toggle:hover .toggle-switch:before {
+  background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+.toggle-checkbox:checked + .toggle-switch {
+  background: #6D4AFF;
+}
+.toggle-checkbox:checked + .toggle-switch:before {
+  left: 25px;
+}
+
+.toggle-checkbox {
+  position: absolute;
+  visibility: hidden;
+}
+
+.toggle-label {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  position: relative;
+  top: 2px;
+  padding-right: 20px;
+}
+
+.toggle-checkbox:disabled + .toggle-switch {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #7e7e7e6e;
+}
+
+.toggle-checkbox:disabled + .toggle-switch:before {
+    background: #ADB5BD;
+}
+
+.toggle-checkbox:disabled ~ .toggle-label {
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: #ADB5BD;
+}
+
+.toggle-checkbox:disabled:hover + .toggle-switch:before {
+    background: #ADB5BD;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
 
 @media (max-width: 730px) {
 	
