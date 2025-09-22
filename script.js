@@ -517,6 +517,8 @@ function generateSingleAWGConfig(proxy) {
   
   awgConfig += `MTU = ${proxy.mtu}\n`;
   if (nojunkEnabled) {} else {
+  awgConfig += `S1 = 0\n`;
+  awgConfig += `S2 = 0\n`;
   awgConfig += `Jc = ${amneziaOptions.jc}\n`;
   awgConfig += `Jmin = ${amneziaOptions.jmin}\n`;
   awgConfig += `Jmax = ${amneziaOptions.jmax}\n`;
